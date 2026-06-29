@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import api from '../api/axios';
+import api, { BASE_URL } from '../api/axios';
 import { AuthContext } from '../context/AuthContext';
+
+const HOST_URL = BASE_URL.replace('/api', '');
 
 const ItemDetail = () => {
   const { id } = useParams();
@@ -83,7 +85,7 @@ const ItemDetail = () => {
           <div className="md:w-1/2 bg-gray-50 flex items-center justify-center min-h-[300px] border-b md:border-b-0 md:border-r border-gray-200">
             {item.image ? (
               <img 
-                src={`http://localhost:5000/uploads/${item.image}`} 
+                src={`${HOST_URL}/uploads/${item.image}`} 
                 alt={item.title} 
                 className="w-full h-full object-contain max-h-[500px]"
               />

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import api from '../api/axios';
+import api, { BASE_URL } from '../api/axios';
+
+const HOST_URL = BASE_URL.replace('/api', '');
 
 const CATEGORIES = [
   'Electronics', 'ID/Documents', 'Clothing', 'Accessories', 
@@ -141,7 +143,7 @@ const BrowseItems = () => {
               <div className="h-48 bg-gray-100 flex items-center justify-center relative overflow-hidden">
                 {item.image ? (
                   <img 
-                    src={`http://localhost:5000/uploads/${item.image}`} 
+                    src={`${HOST_URL}/uploads/${item.image}`} 
                     alt={item.title} 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
